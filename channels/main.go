@@ -14,11 +14,9 @@ func main() {
 		go makeRequest(link, c)
 	}
 
-	fmt.Println(<- c)
-	fmt.Println(<- c)
-	fmt.Println(<- c)
-	fmt.Println(<- c)
-	fmt.Println(<- c)
+	for i := 0; i < len(links); i++ {
+		fmt.Println(<-c) // this is blocking
+	}
 }
 
 func makeRequest(l string, c chan string){
